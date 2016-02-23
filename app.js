@@ -3,6 +3,7 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var dotenv = require('dotenv').config();
+var fs = require('fs');
 
 var routes = require('./routes/index');
 
@@ -12,7 +13,14 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+// logging
 app.use(logger('dev'));
+app.use(logger('common', {
+    stream: fs.createWriteStream('access.log', {
+        flags: 'a'
+    })
+}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
