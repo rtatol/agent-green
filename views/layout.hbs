@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{title}}</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
     <link rel='stylesheet' href='/stylesheets/style.css'/>
 </head>
 <body>
-{{{body}}}
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-sm-1-5"></div>
+    <div class="pure-u-22-24 pure-u-sm-3-5">
+        {{{body}}}
+    </div>
+    <div class="pure-u-1-24 pure-u-sm-1-5"></div>
+</div>
 </body>
 </html>
