@@ -7,7 +7,6 @@ router.get('/', function (req, res) {
         'title': 'Camera',
         'camUrl': process.env.CAMERA_URL
     });
-
 });
 
 module.exports = router;
