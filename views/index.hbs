@@ -1,4 +1,11 @@
-<h1>{{title}}</h1>
-<p>Date: {{currentDate}}</p>
-<p>Temperature [DS18B20]: {{ds18b20Value}} °C</p>
-<p>Temperature [CPU]: {{cpuTempValue}} °C</p>
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-sm-1-5"></div>
+    <div class="pure-u-22-24 pure-u-sm-3-5">
+        <p>Date: {{currentDate}}</p>
+
+        <h2>Temperature [DS18B20]: {{ds18b20Value}} °C</h2>
+
+        <h2>Temperature [CPU]: {{cpuTempValue}} °C</h2>
+    </div>
+    <div class="pure-u-1-24 pure-u-sm-1-5"></div>
+</div>

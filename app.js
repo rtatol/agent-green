@@ -5,7 +5,8 @@ var bodyParser = require('body-parser');
 var dotenv = require('dotenv').config();
 var fs = require('fs');
 
-var routes = require('./routes/index');
+var index = require('./routes/index');
+var camera = require('./routes/camera');
 
 var app = express();
 
@@ -25,7 +26,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', index);
+app.use('/camera', camera);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

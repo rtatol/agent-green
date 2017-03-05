@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
     var cpuTemp = sensors.read('CPU_SENSOR');
 
     res.render('index', {
-        title: 'agent green',
+        title: 'Sensors',
         currentDate: new Date(),
         ds18b20Value: ds18b20,
         cpuTempValue: cpuTemp

@@ -3,6 +3,9 @@ body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-    color: #00B7FF;
+.center-image {
+    text-align: center;
+    margin: auto;
+    display: block;
+    -webkit-user-select: none;
 }
