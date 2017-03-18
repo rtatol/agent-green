@@ -1,12 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var sensors = require('../sensors/sensorReader');
+const sensors = require('../sensors/sensorReader');
 
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
 
-    var ds18b20 = sensors.read('DS18B20');
-    var cpuTemp = sensors.read('CPU_SENSOR');
+    const ds18b20 = sensors.read('DS18B20');
+    const cpuTemp = sensors.read('CPU_SENSOR');
 
     res.render('index', {
         title: 'Sensors',

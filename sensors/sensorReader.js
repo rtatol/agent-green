@@ -1,6 +1,6 @@
-var fs = require('fs');
+const fs = require('fs');
 
-var sensors = {
+const sensors = {
     'DS18B20': readDs18b20Sensor,
     'CPU_SENSOR': readCpuSensor
 };
@@ -10,10 +10,10 @@ function read(sensor) {
 }
 
 function readDs18b20Sensor() {
-    var valueDs18b20 = readSensorFileSync(process.env.DS18B20);
+    const valueDs18b20 = readSensorFileSync(process.env.DS18B20);
 
-    var regexp = /t=(\d+)/;
-    var match = regexp.exec(valueDs18b20);
+    const regexp = /t=(\d+)/;
+    const match = regexp.exec(valueDs18b20);
 
     return match !== null ? match[1] / 1000.0 : undefined;
 }
@@ -25,7 +25,7 @@ function readCpuSensor() {
 }
 
 function readSensorFileSync(fileName) {
-    var fileData;
+    let fileData;
 
     try {
         fileData = fs.readFileSync(fileName, 'utf8');

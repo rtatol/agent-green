@@ -1,14 +1,17 @@
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var dotenv = require('dotenv').config();
-var fs = require('fs');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
+const dotEnv = require('dotenv');
+const fs = require('fs');
 
-var index = require('./routes/index');
-var camera = require('./routes/camera');
+const index = require('./routes/index');
+const camera = require('./routes/camera');
 
-var app = express();
+const app = express();
+
+// load env variables
+dotEnv.config();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,14 +33,14 @@ app.use('/', index);
 app.use('/camera', camera);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
 // error handlers
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
