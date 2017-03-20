@@ -1,7 +1,7 @@
 const mock = require('mock-fs');
 const expect = require("chai").expect;
 
-const sensors = require('../../sensors/sensorReader');
+const sensors = require('../../../modules/sensors/sensorReader');
 
 describe('sensors tests', () => {
 

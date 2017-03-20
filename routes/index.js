@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const sensors = require('../sensors/sensorReader');
+const sensors = require('../modules/sensors/sensorReader');
 
 router.get('/', (req, res) => {
 

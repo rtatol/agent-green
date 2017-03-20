@@ -7,6 +7,7 @@ const fs = require('fs');
 
 const index = require('./routes/index');
 const camera = require('./routes/camera');
+const gpio = require('./modules/gpio/gpio');
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use((err, req, res, next) => {
 
 app.listen(process.env.PORT || 3002, function () {
     console.log('app listening on port ' + this.address().port);
+    gpio.watchMotionSensor();
 });
 
 module.exports = app;
