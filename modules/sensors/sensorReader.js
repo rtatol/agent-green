@@ -31,7 +31,7 @@ function readSensorFileSync(fileName) {
         fileData = fs.readFileSync(fileName, 'utf8');
     } catch (e) {
         if (e.code === 'ENOENT') {
-            console.log('File not found! Filename: ', fileName);
+            console.log('File not found! Filename: %s', fileName);
         } else {
             // here be dragons
             throw e;

@@ -9,6 +9,7 @@ function watchMotionSensor() {
             try {
                 const state = sensor.readSync();
                 if (state == 1) {
+                    console.log('Motion detect %s', new Date());
                     mailer.sendThrottledEmailAlert();
                 }
             } catch (err) {

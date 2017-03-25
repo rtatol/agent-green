@@ -5,8 +5,12 @@ const bodyParser = require('body-parser');
 const dotEnv = require('dotenv');
 const fs = require('fs');
 
+// routes
 const index = require('./routes/index');
 const camera = require('./routes/camera');
+const settings = require('./routes/settings');
+
+// modules
 const gpio = require('./modules/gpio/gpio');
 
 const app = express();
@@ -34,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public'), {
 
 app.use('/', index);
 app.use('/camera', camera);
+app.use('/settings', settings);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -1,0 +1,46 @@
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-sm-1-5"></div>
+    <div class="pure-u-22-24 pure-u-sm-3-5">
+        <form method="post" action="/settings" class="pure-form-stacked">
+            <fieldset>
+                <legend>Alert</legend>
+
+                <label for="enabled" class="pure-checkbox">
+                    <input id="enabled" name="enabled" type="checkbox"
+                           value="{{data.enabled}}"
+                           {{#if data.enabled}}checked="checked"{{/if}}>
+                    Enabled
+                </label>
+
+                <label for="activeFrom">Active from:</label>
+                <input type="time" id="activeFrom" name="activeFrom" placeholder="from" value="{{data.activeFrom}}">
+
+                <label for="activeFrom">Active to:</label>
+                <input type="time" id="activeTo" name="activeTo" placeholder="to" value="{{data.activeTo}}">
+
+                <label>Days: </label>
+                <ul>
+                    {{#each activeDays}}
+                        <li>
+                            <label for="activeDays{{this.index}}" class="pure-checkbox">
+                                <input id="activeDays{{this.index}}" name="activeDays" type="checkbox"
+                                        value={{this.index}}
+                                    {{#if this.value}}checked="checked"{{/if}}>
+                                {{this.name}}
+                            </label>
+                        </li>
+                    {{/each}}
+                </ul>
+
+                <label for="throttlingTimeout">Throttling timeout:</label>
+                <input type="number" id="throttlingTimeout" name="throttlingTimeout" placeholder="timeout" value="{{data.throttlingTimeout}}">
+
+                <label for="mailTo">Mail to: (comma separated values)</label>
+                <input type="text" id="mailTo" name="mailTo" placeholder="mailTo" value="{{data.mailTo}}">
+
+                <button type="submit" class="pure-button pure-button-primary">Save</button>
+            </fieldset>
+        </form>
+    </div>
+    <div class="pure-u-1-24 pure-u-sm-1-5"></div>
+</div>

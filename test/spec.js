@@ -19,7 +19,6 @@ describe('app tests', () => {
             .expect(200, done);
     });
 
-
     it('should throw 404 when everything else', (done) => {
         request(server)
             .get('/foo/bar')
