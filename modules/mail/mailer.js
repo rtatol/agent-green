@@ -21,7 +21,13 @@ function sendEmailAlert(mailTo) {
         to: mailTo,
         subject: 'Token ✔',
         text: 'I am here',
-        html: '<b>I am here</b>'
+        html: '<b>I am here</b>',
+        attachments: [
+            {
+                filename: 'kotojeleń.jpg',
+                path: process.env.SNAPSHOT_PATH
+            }
+        ]
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
