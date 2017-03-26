@@ -35,8 +35,25 @@
                 <label for="throttlingTimeout">Throttling timeout:</label>
                 <input type="number" id="throttlingTimeout" name="throttlingTimeout" placeholder="timeout" value="{{data.throttlingTimeout}}">
 
+                <br>
+
                 <label for="mailTo">Mail to: (comma separated values)</label>
                 <input type="text" id="mailTo" name="mailTo" placeholder="mailTo" value="{{data.mailTo}}">
+
+                <label for="mailSubject">Mail subject:</label>
+                <input type="text" id="mailSubject" name="mailSubject" placeholder="mailSubject" value="{{data.mailSubject}}">
+
+                <label for="mailText">Mail text:</label>
+                <textarea rows="4" cols="30" id="mailText" name="mailText" placeholder="mailText">
+                    {{data.mailText}}
+                </textarea>
+
+                <label for="mailHtml">Mail html:</label>
+                <textarea rows="4" cols="30" id="mailHtml" name="mailHtml" placeholder="mailHtml">
+                    {{data.mailHtml}}
+                </textarea>
+
+                <br>
 
                 <button type="submit" class="pure-button pure-button-primary">Save</button>
             </fieldset>

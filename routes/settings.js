@@ -23,6 +23,9 @@ router.post('/', (req, res) => {
         activeDays: req.body.activeDays,
         throttlingTimeout: parseInt(req.body.throttlingTimeout, 10),
         mailTo: req.body.mailTo,
+        mailSubject: req.body.mailSubject,
+        mailText: req.body.mailText,
+        mailHtml: req.body.mailHtml,
         modifyDate: new Date()
     };
 

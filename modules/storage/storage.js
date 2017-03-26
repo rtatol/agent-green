@@ -37,6 +37,9 @@ function createDefaultAlertSettings(cb) {
         activeDays: [ '1', '2', '3', '4', '5' ],
         throttlingTimeout: 5 * 60 * 1000,
         mailTo: 'kokontoken@gmail.com',
+        mailSubject: 'Token ✔',
+        mailText: 'I am here',
+        mailHtml: '<b>I am here</b>',
         createDate: new Date()
     };
 

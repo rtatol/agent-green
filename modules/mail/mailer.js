@@ -14,14 +14,14 @@ const transporter = nodemailer.createTransport({
 
 let throttlingTimerId;
 
-function sendEmailAlert(mailTo) {
+function sendEmailAlert(settings) {
 
     const mailOptions = {
         from: process.env.MAIL_FROM,
-        to: mailTo,
-        subject: 'Token ✔',
-        text: 'I am here',
-        html: '<b>I am here</b>',
+        to: settings.mailTo,
+        subject: settings.mailSubject,
+        text: settings.mailText,
+        html: settings.mailHtml,
         attachments: [
             {
                 filename: 'kotojeleń.jpg',
@@ -80,7 +80,10 @@ function sendThrottledEmailAlert() {
 
         if (isAllowed(alertSettings)) {
             console.log("Send email");
-            sendEmailAlert(alertSettings.mailTo);
+            // wait one second for motion 'snapshot'
+            setTimeout(() => {
+                sendEmailAlert(alertSettings)
+            }, 1000);
             activateThrottling(alertSettings.throttlingTimeout);
         } else {
             console.log("Email not allowed");
