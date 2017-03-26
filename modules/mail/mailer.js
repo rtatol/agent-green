@@ -42,16 +42,26 @@ function sendEmailAlert(settings) {
 function isAllowed(alertSettings) {
     // check 'throttling'
     if (throttlingTimerId) {
+        console.log("Email not allowed, reason: throttling = %s", throttlingTimerId ? true : false);
         return false;
     }
+
     // check 'enabled' flag
     if (!alertSettings.enabled) {
+        console.log("Email not allowed, reason: alertSettings.enabled = %s", alertSettings.enabled);
         return false;
     }
+
     const currentDate = new Date();
+
     // check 'day'
     const dayValid = alertSettings.activeDays.indexOf(String(currentDate.getDay())) !== -1;
     if (!dayValid) {
+        console.log("Email not allowed, reason: dayValid = %s, currentDay: %s, available days: %s",
+            dayValid,
+            String(currentDate.getDay()),
+            JSON.stringify(alertSettings.activeDays)
+        );
         return false;
     }
 
@@ -64,7 +74,18 @@ function isAllowed(alertSettings) {
     endDate.setHours(alertSettings.activeTo.split(":")[0]);
     endDate.setMinutes(alertSettings.activeTo.split(":")[1]);
 
-    return startDate < currentDate && endDate > currentDate
+    const timeValid = startDate < currentDate && endDate > currentDate;
+    if (!timeValid) {
+        console.log("Email not allowed, reason: timeValid = %s, currentDate: %s, startDate days: %s, endDate: %s",
+            timeValid,
+            currentDate,
+            startDate,
+            endDate
+        );
+        return false;
+    }
+
+    return true;
 }
 
 function activateThrottling(throttlingTimeout) {
@@ -79,14 +100,12 @@ function sendThrottledEmailAlert() {
     storage.getAlertSettings((err, alertSettings) => {
 
         if (isAllowed(alertSettings)) {
-            console.log("Send email");
+            console.log("Sending email");
             // wait one second for motion 'snapshot'
             setTimeout(() => {
                 sendEmailAlert(alertSettings)
             }, 1000);
             activateThrottling(alertSettings.throttlingTimeout);
-        } else {
-            console.log("Email not allowed");
         }
     });
 }

@@ -13,12 +13,12 @@ function watchMotionSensor() {
                     mailer.sendThrottledEmailAlert();
                 }
             } catch (err) {
-                console.log(err);
+                console.error(err);
             }
         }, 200);
 
     } catch (err) {
-        console.log(err);
+        console.error(err);
     }
 }
 

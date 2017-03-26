@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
         if (err) {
             res.send(err);
         } else {
-            console.log("settings was updated " + numReplaced);
+            console.log("settings was updated %s", numReplaced);
             res.redirect('/settings');
         }
     });
